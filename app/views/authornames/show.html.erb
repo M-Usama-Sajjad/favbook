@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+
+ <% @authorname.booknames.each do |bookname| %>
+ <div class="col-md-6">
+<div class="card" style="width: 18rem;">
+<%if  bookname.image.present?%>
+  <%=image_tag bookname.image, class:"card-img-top" %>
+  <%end%>
+  <div class="card-body">
+    <h5 class="card-title">Book Name:</h5>
+    <p class="card-text"><%=bookname.book_name  %></p>
+     <%= link_to 'Edit', edit_bookname_path(bookname) ,class:"btn btn-secondary" %> |
+  <%= link_to 'Destroy',bookname, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  </div>
+</div>
+
+
+</div>
+  <% end %>
+      </div>
+
+  <br/>
+ <%= link_to 'Edit', edit_authorname_path(@authorname) ,class:"btn btn-secondary" %> |
+  <%= link_to 'Back', authornames_path ,class:"btn btn-secondary"%> |
+  <%= link_to 'Destroy', @authorname, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %>
+
+

@@ -1,0 +1,27 @@
+<%= form_with model: @authorname ,data:{controller: 'nested-form',nested_form_wrapper_selector_value: '.nested-form-wrapper'} do |f| %>
+
+
+
+<template data-nested-form-target="template">
+<%= f.fields_for :booknames, Bookname.new , child_index: "NEW_RECORD" do |bookname_fields|%>
+  <%=render "bookname_form" , f: bookname_fields %>
+<%end%>
+</template>
+
+
+<%= f.fields_for :booknames do |bookname_fields|%>
+  <%=render "bookname_form" , f: bookname_fields %>
+<%end%>
+
+<div data-nested-form-target="target"></div>
+
+<button class="btn btn-secondary" data-action="nested-form#add" >Add Book</button>
+ <div class="field form-group">
+    <%= f.label :author_name %>
+    <%= f.text_field :author_name,class:"form-control" %>
+  </div>
+  <br/>
+  <div class="actions" >
+    <%= f.submit class:"btn btn-secondary"  %>
+  </div>
+<% end %>

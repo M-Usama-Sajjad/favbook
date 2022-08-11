@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Author Names</h1>
+
+<table class="table table-dark table-striped">
+  <thead class= "thead-dark">
+    <tr>
+      <th> Names</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authornames.each do |authorname| %>
+      <tr>
+        <td><%= link_to authorname.author_name, authorname ,class:"btn btn-secondary"%></td>
+
+
+
+
+        <td><%= link_to 'Destroy', authorname, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Authorname', new_authorname_path,class:"btn btn-secondary" %>
